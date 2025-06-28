@@ -16,3 +16,7 @@ The textual Answer will be printed to the screen, in addition, 2 files named the
 - a md file, where the text is saved in md format
 
 These files lie in the `questions/`-folder.
+
+## Tests
+
+To run the testsuite, enter `pytest` in the applicaton directory.

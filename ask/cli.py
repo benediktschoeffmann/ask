@@ -8,7 +8,7 @@ app = typer.Typer()
 
 def _version_callback(value: bool) -> None:
     if value:
-        typer.echo(f"{__app_name__} version {__version__}")
+        typer.echo(f"{__app_name__} version {__version__}\n")
         raise typer.Exit()
 
 @app.callback()     
