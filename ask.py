@@ -23,13 +23,21 @@ chat_completion = client.chat.completions.create(
 )
 
 content = chat_completion.choices[0].message.content
-filename = "questions/" + question.replace(" ", "_").replace(":", "").replace("?", "").replace(",", "").replace(".", "") + ".md"
+filename = "questions/" + question.replace(" ", "_").replace(":", "").replace("?", "").replace(",", "").replace(".", "") 
+filenameMd = filename + ".md"
+filenameJson = filename + ".json"
 
-with open(filename, "w") as file:
+# textual answer
+with open(filenameMd, "w") as file:
     file.write("# " + question + "\n\n")
     file.write("## Answer\n")
     file.write(content)
-
 file.close()
+
+# metadata
+with open(filenameJson, "w") as file:
+    file.write(chat_completion)
+file.close()
+
+# print the answer to screen
 print(chat_completion.choices[0].message.content)
-print(chat_completion.choices[0].message)
