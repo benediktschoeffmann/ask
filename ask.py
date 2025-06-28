@@ -1,6 +1,8 @@
 import json
+import jsonpickle
 import os
 from dotenv import load_dotenv
+from dataclasses import dataclass
 
 from groq import Groq
 
@@ -37,7 +39,8 @@ file.close()
 
 # metadata
 with open(filenameJson, "w") as file:
-    file.write(json.dumps(chat_completion.__dict__))
+    json = jsonpickle.encode(chat_completion)
+    file.write(json)
 file.close()
 
 # print the answer to screen
