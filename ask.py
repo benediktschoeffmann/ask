@@ -10,7 +10,7 @@ client = Groq(
     api_key=os.environ.get("GROQ_API_KEY"),
 )
 
-question = "Explain the advantages of non-sql databases over sql databases"
+question = input("Enter your question: ")
 
 chat_completion = client.chat.completions.create(
     messages=[
@@ -22,4 +22,14 @@ chat_completion = client.chat.completions.create(
     model="llama-3.3-70b-versatile",
 )
 
+content = chat_completion.choices[0].message.content
+filename = "questions/" + question.replace(" ", "_").replace(":", "").replace("?", "").replace(",", "").replace(".", "") + ".md"
+
+with open(filename, "w") as file:
+    file.write("# " + question + "\n\n")
+    file.write("## Answer\n")
+    file.write(content)
+
+file.close()
 print(chat_completion.choices[0].message.content)
+print(chat_completion.choices[0].message)
