@@ -2,4 +2,6 @@
 .env
 questions/*.md
 questions/*.json
-**/__pycache__/
+__pycache__/
+tests/__pycache__/
+# ask/__pycache__/cli.cpython-310.pyc
