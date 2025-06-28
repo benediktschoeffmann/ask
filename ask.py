@@ -1,3 +1,4 @@
+import json
 import os
 from dotenv import load_dotenv
 
@@ -36,7 +37,7 @@ file.close()
 
 # metadata
 with open(filenameJson, "w") as file:
-    file.write(chat_completion)
+    file.write(json.dumps(chat_completion.__dict__))
 file.close()
 
 # print the answer to screen
